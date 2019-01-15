@@ -1,13 +1,14 @@
 import React from 'react'
 import { Profile } from './Profile'
 import nba from 'nba'
+import { ShotChart } from './ShotChart';
 
 window.nba = nba;
 
 export class Main extends React.Component {
     state = {
         playerId: nba.findPlayer('Stephen Curry').playerId,
-        playerInfo: {}
+        playerInfo: {playerId:201939, playerName: "Stephen Curry"}
     }
 
     //nba.stats.playerInfo *GET*
@@ -29,7 +30,7 @@ export class Main extends React.Component {
         return (
             <div className="main">
                 <Profile playerInfo = {this.state.playerInfo} />
-                <div>ShotChart</div>
+                <ShotChart playerId = {this.state.playerId} />
             </div>
         );
     }

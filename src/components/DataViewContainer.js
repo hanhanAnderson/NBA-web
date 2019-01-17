@@ -40,25 +40,25 @@ export class DataViewContainer extends React.Component {
                 <ShotChart playerId={this.props.playerId}
                     minCount={this.state.minCount}
                     displayToolTips={true}
-                    chartType={"hexbin"}
+                    chartType={this.state.chartType}
                 />
                 {this.state.chartType === 'hexbin' ? (
                     <Row className="filter-row">
                       <Col span={2} offset={3} className="filter-label">Shots:</Col>
                       <Col span={16}>
-                        <CountSlider onMinCountChange={_.debounce(this.onMinCountChange, 500)} className="filter-control" />
+                        <CountSlider value={this.state.minCount} onChange={_.debounce(this.onMinCountChange, 500)} className="filter-control" />
                       </Col>
                     </Row>
                   ) : null}
-                <Row>
+                <Row className="filter-row">
                     <Col span={10} offset={3}>
-                        <RadioGroup onChange={this.onChartTypeChange} value={this.state.chartType}>
+                        <RadioGroup className="filter-control" onChange={this.onChartTypeChange} value={this.state.chartType}>
                             <Radio value={"hexbin"}>Hexbin</Radio>
                             <Radio value={"scatter"}>Scatter</Radio>
                         </RadioGroup>
                     </Col>
                     <Col span={2}>Tooltip:</Col>
-                    <Col span={3}>
+                    <Col span={3} className = "filter-control">
                         <Switch onChange={this.onTooltipChange} checkedChildren="On" unCheckedChildren="Off" defaultChecked />
                     </Col>
                 </Row>

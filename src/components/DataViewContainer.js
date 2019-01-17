@@ -39,7 +39,7 @@ export class DataViewContainer extends React.Component {
             <div className="data-view">
                 <ShotChart playerId={this.props.playerId}
                     minCount={this.state.minCount}
-                    displayToolTips={true}
+                    displayToolTips={this.state.displayToolTips}
                     chartType={this.state.chartType}
                 />
                 {this.state.chartType === 'hexbin' ? (

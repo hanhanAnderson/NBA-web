@@ -9,10 +9,12 @@ import {
     }
   
     onChange = (value) => {
+      let cleanValue = Number(value) ? value : this.state.inputValue;
+      cleanValue = (cleanValue < 2|| cleanValue > 20 )? this.state.inputValue : cleanValue;
       this.setState({
-        inputValue: value,
+        inputValue: cleanValue,
       });
-      this.props.onChange(value);
+      this.props.onChange(cleanValue);
     }
   
     render() {
